@@ -1,12 +1,14 @@
 package racingcar.validate;
 
-import racingcar.input.Input;
+import racingcar.api.InputApi;
+import racingcar.exception.CustomException;
+import racingcar.exception.ErrorCode;
 
 import java.util.Arrays;
 
 public class CarNameValidate {
 
-    private static String[] checkCarNames = Input.getInputCarNames();
+    private static final String[] checkCarNames = InputApi.getInputCarNames();
 
     public static String[] validateCarNames() {
         checkCarCount();
@@ -14,29 +16,29 @@ public class CarNameValidate {
         return checkCarNameLength();
     }
 
-
     public static String[] checkCarNameLength() {
         for (String check : checkCarNames) {
             if (check.length() > 5) {
-                System.out.println("5글자 넘음");
+                System.out.println(ErrorCode.CAR_NAME_LENGTH);
+                throw new CustomException(ErrorCode.CAR_NAME_LENGTH);
             }
         }
         return checkCarNames;
     }
 
-    public static String[] checkCarCount() {
+    public static void checkCarCount() {
         if (checkCarNames.length < 2) {
-            System.out.println("차는 2개 이상");
+            System.out.println(ErrorCode.CAR_COUNT);
+            throw new CustomException(ErrorCode.CAR_COUNT);
         }
-        return checkCarNames;
     }
 
-    public static String[] checkDuplicationCarName() {
+    public static void checkDuplicationCarName() {
         long count = Arrays.stream(checkCarNames).distinct().count();
         if (count != checkCarNames.length) {
-            System.out.println("자동차 이름 중복.");
+            System.out.println(ErrorCode.DUPLICATION_CAR_NAME);
+            throw new CustomException(ErrorCode.DUPLICATION_CAR_NAME);
         }
-        return checkCarNames;
     }
 
 }
