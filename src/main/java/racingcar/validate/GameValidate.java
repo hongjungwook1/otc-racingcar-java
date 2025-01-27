@@ -1,14 +1,18 @@
 package racingcar.validate;
 
 import racingcar.api.InputApi;
+import racingcar.exception.CustomException;
+import racingcar.exception.ErrorCode;
 
-public class GameCountValidate {
+public class GameValidate {
     private static final int gameCount = InputApi.getInputGameCount();
 
     public static int validateGameCount() {
         if (gameCount < 0) {
-            System.out.println("게임 횟수가 0보다 작음");
+            System.out.println(ErrorCode.GAME_COUNT_LESS_THAN_ZERO);
+            throw new CustomException(ErrorCode.GAME_COUNT_LESS_THAN_ZERO);
         }
         return gameCount;
     }
+
 }

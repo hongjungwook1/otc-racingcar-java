@@ -40,5 +40,5 @@ public class CarNameValidate {
             throw new CustomException(ErrorCode.DUPLICATION_CAR_NAME);
         }
     }
-
+    // 공백 제거 추가 예정
 }
