@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CarService implements CarInterface {
 
-    static List<Car> cars = new ArrayList<>();
+    static final List<Car> cars = new ArrayList<>();
 
     @Override
     public List<Car> getCarName() {
@@ -27,6 +27,4 @@ public class CarService implements CarInterface {
             car.move(InputApi.pickOneRandomNumber());
         }
     }
-
-
 }

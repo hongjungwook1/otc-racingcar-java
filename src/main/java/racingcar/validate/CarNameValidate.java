@@ -16,7 +16,7 @@ public class CarNameValidate {
         return checkCarNameLength();
     }
 
-    public static String[] checkCarNameLength() {
+    private static String[] checkCarNameLength() {
         for (String check : checkCarNames) {
             if (check.length() > 5) {
                 System.out.println(ErrorCode.CAR_NAME_LENGTH);
@@ -26,14 +26,14 @@ public class CarNameValidate {
         return checkCarNames;
     }
 
-    public static void checkCarCount() {
+    private static void checkCarCount() {
         if (checkCarNames.length < 2) {
             System.out.println(ErrorCode.CAR_COUNT);
             throw new CustomException(ErrorCode.CAR_COUNT);
         }
     }
 
-    public static void checkDuplicationCarName() {
+    private static void checkDuplicationCarName() {
         long count = Arrays.stream(checkCarNames).distinct().count();
         if (count != checkCarNames.length) {
             System.out.println(ErrorCode.DUPLICATION_CAR_NAME);

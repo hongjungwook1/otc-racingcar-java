@@ -8,6 +8,5 @@ public interface RaceResultManagerInterface {
     int getMaxPosition(List<Car> cars);
 
     List<String> resultWinner(List<Car> cars);
-
-
+    
 }

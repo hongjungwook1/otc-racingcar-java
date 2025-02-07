@@ -1,14 +1,19 @@
 package racingcar.model;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
+import lombok.experimental.NonFinal;
 
 @Getter
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class Car {
 
-    private final String name;
+    String name;
     @Setter
-    private int position = 0;
+    @NonFinal
+    int position = 0;
 
     public Car(String name) {
         this.name = name;

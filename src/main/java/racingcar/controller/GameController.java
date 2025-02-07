@@ -9,9 +9,19 @@ import java.util.List;
 
 public class GameController {
 
-    CarService carService = new CarService();
-    GameService gameService = new GameService();
-    RaceResultManager raceResultManager = new RaceResultManager();
+    CarService carService;
+    GameService gameService;
+    RaceResultManager raceResultManager;
+
+    public GameController(CarService carService, GameService gameService, RaceResultManager raceResultManager) {
+        this.carService = carService;
+        this.gameService = gameService;
+        this.raceResultManager = raceResultManager;
+    }
+
+//    CarService carService = new CarService();
+//    GameService gameService = new GameService();
+//    RaceResultManager raceResultManager = new RaceResultManager();
 
     // carService 에서 가져온 메소드를 어떠한 추가 작업이 없기에 바로 호출
     public void gameStart() {
@@ -26,7 +36,7 @@ public class GameController {
         System.out.println("우승자 : " + raceResultManager.resultWinner(cars));
     }
 
-    public void printCar(List<Car> cars) {
+    private void printCar(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
